@@ -4,3 +4,89 @@ title = "My New Hugo Site"
 theme = "hello-friend-ng"
 contentDir = "content"
 publishDir = "docs"
+
+DefaultContentLanguage = "en"
+
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+
+buildDrafts  = false
+buildFuture  = false
+buildExpored = false
+canonifyURLs = true
+
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+[author]
+  name = "Austin Riendeau"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Metadata mostly used in document's head
+  description = "a place for me to geek"
+  keywords = "homepage, blog, science,development, programming"
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  defaultTheme = "dark"
+  themeColor = "#252627"
+
+  # Integrate Javascript files or stylesheets by adding the url to the external assets or by
+  # linking local files with their path relative to the static folder, e.g. "css/styles.css"
+  customCSS = []
+  customJS  = []
+
+  # Social icons
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/apriendeau"
+
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/apriendeau"
+
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/apriendeau"
+
+[languages]
+  [languages.en]
+    title = "Hello, my name is Austin"
+    subtitle = "My name is Austin"
+    keywords = ""
+    copyright = ""
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "apriendeau"
+      logoHomeLink = "/"
+
+   # You can create a language based menu
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+
+# And you can even create generic menu
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about"
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
+
+
