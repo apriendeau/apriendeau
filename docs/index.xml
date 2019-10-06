@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hello, my name is Austin</title>
+    <link>/</link>
+    <description>Recent content on Hello, my name is Austin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Sep 2019 11:51:35 -0600</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Sat, 28 Sep 2019 11:51:35 -0600</pubDate>
+      
+      <guid>/about/</guid>
+      <description>My name is Austin Riendeau. I am developer, geek, and musician. I tend to write a lot of Go and think our mascot is the best thing ever.</description>
+    </item>
+    
+  </channel>
+</rss>
