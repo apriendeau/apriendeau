@@ -12,6 +12,9 @@
     ">1%",
     "not dead"
   ],
+  "dependencies": {
+    "tar": ">=2.2.2"
+  },
   "devDependencies": {
     "bulma": "^0.7.4",
     "node-sass": "^4.11.0"
