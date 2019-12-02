@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/Users/austinriendeau/Go/src/github.com/apriendeau/apriendeau",
+	"sourceRoot": "/Users/austin/Go/src/github.com/apriendeau",
 	"sources": [
 		"themes/hello-friend-ng/assets/scss/main.scss",
 		"themes/hello-friend-ng/assets/scss/_normalize.scss",
