@@ -1,0 +1,43 @@
+@import "milligram";
+
+$purple: #5f0b9c;
+$blue: #1386bf;
+$black: #393a3b;
+
+html,
+body {
+  color: $black;
+}
+
+.header.header-text {
+  h1 {
+    text-align: center;
+    color: $black;
+  }
+}
+
+nav {
+  div {
+    ul {
+      width: auto;
+      margin: 0 auto;
+      li {
+        list-style: none;
+        display: inline-block;
+        padding: 0px 5px;
+        a {
+          color: $purple;
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 40rem) {
+  .mobile-nac {
+    margin-left: 0%;
+  }
+}
