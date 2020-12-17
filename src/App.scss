@@ -1,4 +1,4 @@
-@import "milligram";
+@import "purecss";
 
 $purple: #5f0b9c;
 $blue: #1386bf;
@@ -7,33 +7,55 @@ $black: #393a3b;
 html,
 body {
   color: $black;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
-.header.header-text {
+.header {
   h1 {
+    display: block;
+    width: 100%;
     text-align: center;
     color: $black;
   }
 }
 
 nav {
-  div {
-    ul {
-      width: auto;
-      margin: 0 auto;
-      li {
-        list-style: none;
-        display: inline-block;
-        padding: 0px 5px;
-        a {
-          color: $purple;
-          &:hover {
-            color: $blue;
-          }
+  ul {
+    width: auto;
+    margin: 0 auto;
+    li {
+      list-style: none;
+      display: inline-block;
+      padding: 0px 5px;
+      a {
+        color: $purple;
+        &:hover {
+          color: $blue;
         }
       }
     }
   }
+}
+
+.home {
+    text-align: center;
+    height: 100vh;
+    .center-text {
+      position:relative;
+      text-align: center;
+      height: 100vh;
+      h1 {
+	  width: 100%;
+	  position:absolute;
+	  top:50%;
+	  margin: -2em auto 0 ;
+      }
+    }
 }
 
 @media (max-width: 40rem) {
