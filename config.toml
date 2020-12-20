@@ -63,7 +63,7 @@ weight = 2
     link = "https://github.com/apriendeau"
   [[params.social]]
     name = "linkedin"
-    link = "https://www.linkedin.com/apriendeau"
+    link = "https://www.linkedin.com/in/apriendeau"
   [[params.social]]
     name = "email"
     link = "austin@apriendeau.com"  # no need for "mailto:" in the head
