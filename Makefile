@@ -5,7 +5,7 @@ build: ## Default building of site with no server
 	hugo --config="config.toml"
 
 post: ## create a new post
-	hugo new post/${args}.md
+	hugo new posts/${args}.md
 
 server: ## create a localserver to run on localhost:1313
 	hugo ${args} server -D --config="config.toml"

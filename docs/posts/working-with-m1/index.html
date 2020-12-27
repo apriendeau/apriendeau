@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> My journey with an M1 and Emacs | My name is Austin</title>
+  <meta name="description" content="My name is Austin. I live with ADHD. These are my ramblings, thoughts and musings.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="My journey with an M1 and Emacs" />
+<meta property="og:description" content="TLDR; Things are coming together but just wait if you want to use this type of macbook in a Professional development capicity.
+*Note: At the time of writing this, Docker was not supported and both Rust and Go would not compile on M1 and were in beta versions.
+I had not upgraded my existing macbook in 8 years and Apple finally decided to cut me off from OS upgrades. So naturally, I grabbed an Apple M1 Macbook Air without thinking much." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.apriendeau.com/posts/working-with-m1/" />
+<meta property="article:published_time" content="2020-12-26T20:45:10-07:00" />
+<meta property="article:modified_time" content="2020-12-26T20:45:10-07:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My journey with an M1 and Emacs"/>
+<meta name="twitter:description" content="TLDR; Things are coming together but just wait if you want to use this type of macbook in a Professional development capicity.
+*Note: At the time of writing this, Docker was not supported and both Rust and Go would not compile on M1 and were in beta versions.
+I had not upgraded my existing macbook in 8 years and Apple finally decided to cut me off from OS upgrades. So naturally, I grabbed an Apple M1 Macbook Air without thinking much."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.apriendeau.com/css/style-dark.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.apriendeau.com/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&text=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&is_video=false&description=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=My%20journey%20with%20an%20M1%20and%20Emacs&body=Check out this article: https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&name=My%20journey%20with%20an%20M1%20and%20Emacs&description=TLDR%3b%20Things%20are%20coming%20together%20but%20just%20wait%20if%20you%20want%20to%20use%20this%20type%20of%20macbook%20in%20a%20Professional%20development%20capicity.%0a%2aNote%3a%20At%20the%20time%20of%20writing%20this%2c%20Docker%20was%20not%20supported%20and%20both%20Rust%20and%20Go%20would%20not%20compile%20on%20M1%20and%20were%20in%20beta%20versions.%0aI%20had%20not%20upgraded%20my%20existing%20macbook%20in%208%20years%20and%20Apple%20finally%20decided%20to%20cut%20me%20off%20from%20OS%20upgrades.%20So%20naturally%2c%20I%20grabbed%20an%20Apple%20M1%20Macbook%20Air%20without%20thinking%20much.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&t=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents"></nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        My journey with an M1 and Emacs
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2020-12-26 20:45:10 -0700 MST" itemprop="datePublished">2020-12-26</time>
+          
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/development" rel="tag">development</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/apple" rel="tag">apple</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/m1" rel="tag">m1</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/emacs" rel="tag">emacs</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/homebrew" rel="tag">homebrew</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <p>TLDR; Things are coming together but just wait if you want to use this type of macbook in a Professional development capicity.</p>
+<p>*Note: At the time of writing this, Docker was not supported and both Rust and Go would not compile on M1 and were in beta versions.</p>
+<p>I had not upgraded my existing macbook in 8 years and Apple finally decided to cut me off from OS upgrades. So naturally, I grabbed an Apple M1 Macbook Air without thinking much.
+The first thing that I did was attempt to install Homebrew. Well that was a nightmare. There was not any good documentation on how to do it, so I am going to let you know how I
+got both systems up</p>
+<p>So let&rsquo;s get to work, the way for me to get around it without much diving in, was clone the repo into <code>/opt/homebrew</code> with one terminal running in M1 and a copy running in Rosetta, I installed Homebrew the usual way. I then added to my .zshrv the following lines:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rosetta<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>sysctl -n sysctl.proc_translated<span style="color:#66d9ef">)</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $rosetta -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>;
+<span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;&gt;&gt;&gt; CPU_ARCH: m1&#34;</span>
+    export PATH<span style="color:#f92672">=</span>/opt/homebrew/bin:$PATH
+<span style="color:#66d9ef">else</span>
+    echo <span style="color:#e6db74">&#34;&gt;&gt;&gt; CPU_ARCH: rosetta2&#34;</span>
+    export PATH<span style="color:#f92672">=</span>/usr/local/lib/ruby/gems/2.7.0/bin:$PATH
+    export PATH<span style="color:#f92672">=</span>/usr/local/bin:/usr/local/opt/ruby/bin:/bin:/usr/bin:$PATH
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><p>This allowed me to tell what kind of terminal that I was running in. Rosetta2 mostly works with a few hiccups with C so I have been attempting to use the M1 and edit brew files as I go.
+I next needed emacs (if you are a vim user, it works outside of the box) and I use <a href="https://github.com/d12frosted/homebrew-emacs-plus">d12frosted/emacs-plus</a>. When attempting to install,
+I would run into an error compiling Rust.* I preceded to use emacs in Rosetta mode which lasted about 2 weeks before they patched emacs for ARM. This was great news but now blocked me
+from using Rosetta, because it knew I was on an ARM processor and jumping straight to using that patch. This was great news and bad news because Homebrew still didn&rsquo;t support Rust. After
+doing some debugging, I figured out that <code>librsvg</code> was where the Rust dependency was being required from. I immediately changed this line in the formula from:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">	depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span>
+</code></pre></div><p>to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">	depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">:recommended</span>
+</code></pre></div><p>This gave me emacs again! Yay, I could code like I am normally do. Everything installed with Straight and started writing this. After posting a PR for my patch and a day later, homebrew updated
+patches for Rust and Go on Christmas. So the moral of this Christmas tale is that I guess I should have been more patient but now I am just happy to have emacs working on the M1 and
+not using Rosetta as it is a far better and smoother experience.</p>
+<p>If patience was one of my virtues, I wouldn&rsquo;t be a developer. 😆</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents"></nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&text=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&is_video=false&description=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=My%20journey%20with%20an%20M1%20and%20Emacs&body=Check out this article: https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&title=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&name=My%20journey%20with%20an%20M1%20and%20Emacs&description=TLDR%3b%20Things%20are%20coming%20together%20but%20just%20wait%20if%20you%20want%20to%20use%20this%20type%20of%20macbook%20in%20a%20Professional%20development%20capicity.%0a%2aNote%3a%20At%20the%20time%20of%20writing%20this%2c%20Docker%20was%20not%20supported%20and%20both%20Rust%20and%20Go%20would%20not%20compile%20on%20M1%20and%20were%20in%20beta%20versions.%0aI%20had%20not%20upgraded%20my%20existing%20macbook%20in%208%20years%20and%20Apple%20finally%20decided%20to%20cut%20me%20off%20from%20OS%20upgrades.%20So%20naturally%2c%20I%20grabbed%20an%20Apple%20M1%20Macbook%20Air%20without%20thinking%20much.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.apriendeau.com%2fposts%2fworking-with-m1%2f&t=My%20journey%20with%20an%20M1%20and%20Emacs">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2020  austin riendeau  
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>

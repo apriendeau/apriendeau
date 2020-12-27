@@ -8,9 +8,6 @@ publishDir = "docs"
 copyright = "austin riendeau " # cactus will use title if copyright is not set
 disqusShortname = "apriendeau" # Used when comments is enabled. Cactus will use site title if not set
 # googleAnalytics = "UA-1234-5"
-
-
-
 # summaryLength = 2
 
 # Main menu which appears below site header.
@@ -23,7 +20,6 @@ weight = 1
 name = "Writings"
 url = "/posts"
 weight = 2
-
 
 [markup]
   [markup.tableOfContents]
@@ -38,11 +34,11 @@ weight = 2
   googleAnalyticsAsync = true # use asynchronous tracking. Synchronous tracking by default
 
   # Home page settings
-  description = ""
+  description = "My name is Austin. I live with ADHD. These are my ramblings, thoughts and musings."
   mainSection = "posts" # your main section
   showAllPostsOnHomePage = false # default
-  postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
-  tagsOverview = true # show tags overview by default.
+  postsOnHomePage = 10 # this option will be ignored if showAllPostsOnHomePage is set to true
+  tagsOverview = false # show tags overview by default.
   showProjectsList = true # show projects list by default (if projects data file exists).
   projectsUrl = "https://github.com/apriendeau" # title link for projects list
 
