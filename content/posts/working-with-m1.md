@@ -25,8 +25,7 @@ then
     export PATH=/opt/homebrew/bin:$PATH
 else
     echo ">>> CPU_ARCH: rosetta2"
-    export PATH=/usr/local/lib/ruby/gems/2.7.0/bin:$PATH
-    export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:/bin:/usr/bin:$PATH
+    export PATH=/usr/local/bin:/bin:/usr/bin:$PATH
 fi
 ```
 
@@ -37,13 +36,13 @@ from using Rosetta, because it knew I was on an ARM processor and jumping straig
 doing some debugging, I figured out that `librsvg` was where the Rust dependency was being required from. I immediately changed this line in the formula from:
 
 ```ruby
-	depends_on "librsvg"
+depends_on "librsvg"
 ```
 
 to:
 
 ```ruby
-	depends_on "librsvg" => :recommended
+depends_on "librsvg" => :recommended
 ```
 
 This gave me emacs again! Yay, I could code like I am normally do. Everything installed with Straight and started writing this. After posting a PR for my patch and a day later, homebrew updated

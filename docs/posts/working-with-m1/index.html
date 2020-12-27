@@ -212,17 +212,16 @@ got both systems up</p>
     export PATH<span style="color:#f92672">=</span>/opt/homebrew/bin:$PATH
 <span style="color:#66d9ef">else</span>
     echo <span style="color:#e6db74">&#34;&gt;&gt;&gt; CPU_ARCH: rosetta2&#34;</span>
-    export PATH<span style="color:#f92672">=</span>/usr/local/lib/ruby/gems/2.7.0/bin:$PATH
-    export PATH<span style="color:#f92672">=</span>/usr/local/bin:/usr/local/opt/ruby/bin:/bin:/usr/bin:$PATH
+    export PATH<span style="color:#f92672">=</span>/usr/local/bin:/bin:/usr/bin:$PATH
 <span style="color:#66d9ef">fi</span>
 </code></pre></div><p>This allowed me to tell what kind of terminal that I was running in. Rosetta2 mostly works with a few hiccups with C so I have been attempting to use the M1 and edit brew files as I go.
 I next needed emacs (if you are a vim user, it works outside of the box) and I use <a href="https://github.com/d12frosted/homebrew-emacs-plus">d12frosted/emacs-plus</a>. When attempting to install,
 I would run into an error compiling Rust.* I preceded to use emacs in Rosetta mode which lasted about 2 weeks before they patched emacs for ARM. This was great news but now blocked me
 from using Rosetta, because it knew I was on an ARM processor and jumping straight to using that patch. This was great news and bad news because Homebrew still didn&rsquo;t support Rust. After
 doing some debugging, I figured out that <code>librsvg</code> was where the Rust dependency was being required from. I immediately changed this line in the formula from:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">	depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span>
 </code></pre></div><p>to:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">	depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">:recommended</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">:recommended</span>
 </code></pre></div><p>This gave me emacs again! Yay, I could code like I am normally do. Everything installed with Straight and started writing this. After posting a PR for my patch and a day later, homebrew updated
 patches for Rust and Go on Christmas. So the moral of this Christmas tale is that I guess I should have been more patient but now I am just happy to have emacs working on the M1 and
 not using Rosetta as it is a far better and smoother experience.</p>
