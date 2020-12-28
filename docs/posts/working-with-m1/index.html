@@ -212,7 +212,7 @@ got both systems up</p>
     export PATH<span style="color:#f92672">=</span>/opt/homebrew/bin:$PATH
 <span style="color:#66d9ef">else</span>
     echo <span style="color:#e6db74">&#34;&gt;&gt;&gt; CPU_ARCH: rosetta2&#34;</span>
-    export PATH<span style="color:#f92672">=</span>/usr/local/bin:/bin:/usr/bin:$PATH
+    export PATH<span style="color:#f92672">=</span>/usr/local/bin:$PATH
 <span style="color:#66d9ef">fi</span>
 </code></pre></div><p>This allowed me to tell what kind of terminal that I was running in. Rosetta2 mostly works with a few hiccups with C so I have been attempting to use the M1 and edit brew files as I go.
 I next needed emacs (if you are a vim user, it works outside of the box) and I use <a href="https://github.com/d12frosted/homebrew-emacs-plus">d12frosted/emacs-plus</a>. When attempting to install,

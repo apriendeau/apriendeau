@@ -25,7 +25,7 @@ then
     export PATH=/opt/homebrew/bin:$PATH
 else
     echo ">>> CPU_ARCH: rosetta2"
-    export PATH=/usr/local/bin:/bin:/usr/bin:$PATH
+    export PATH=/usr/local/bin:$PATH
 fi
 ```
 
