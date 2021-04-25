@@ -1,54 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.apriendeau.com/tags/apple/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/tags/development/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/tags/emacs/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/tags/homebrew/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/tags/m1/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/posts/working-with-m1/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/posts/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/tags/</loc>
     <lastmod>2020-12-26T20:45:10-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.apriendeau.com/categories/</loc>
   </url>
-  
 </urlset>
