@@ -1,11 +1,11 @@
 baseURL = "https://www.apriendeau.com/"
 languageCode = "en-us"
-title = "My name is Austin"
+title = "v1ntage"
 theme = "cactus"
 
 contentDir = "content"
 publishDir = "docs"
-copyright = "austin riendeau " # cactus will use title if copyright is not set
+copyright = "v1ntage " # cactus will use title if copyright is not set
 disqusShortname = "apriendeau" # Used when comments is enabled. Cactus will use site title if not set
 # googleAnalytics = "UA-1234-5"
 # summaryLength = 2
@@ -28,13 +28,15 @@ weight = 2
     startLevel = 2
 
 [params]
-  gravatar = "austin@apriendeau.com"
+  # gravatar = "austin@apriendeau.com"
   colortheme = "dark" # dark, light, white, or classic
   rss = true # generate rss feed. default value is false
   googleAnalyticsAsync = true # use asynchronous tracking. Synchronous tracking by default
 
   # Home page settings
-  description = "My name is Austin. I live with ADHD. I dabble in keebs, music and programming."
+  description = """
+  I live with ADHD. I dabble in keebs, 3D Printing, Olympic Lifting, making music and programming but mostly raise two tiny humans.
+  """
   mainSection = "posts" # your main section
   showAllPostsOnHomePage = false # default
   postsOnHomePage = 10 # this option will be ignored if showAllPostsOnHomePage is set to true
