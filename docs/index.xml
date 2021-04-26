@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My name is Austin</title>
+    <title>v1ntage</title>
     <link>https://www.apriendeau.com/</link>
-    <description>Recent content on My name is Austin</description>
+    <description>Recent content on v1ntage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>austin riendeau </copyright>
+    <copyright>v1ntage </copyright>
     <lastBuildDate>Sat, 26 Dec 2020 20:45:10 -0700</lastBuildDate><atom:link href="https://www.apriendeau.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My journey with an M1 and Emacs</title>
