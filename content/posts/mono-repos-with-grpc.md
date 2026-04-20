@@ -1,5 +1,5 @@
 ---
-title: "Mono Repos"
+title: "Mono Repos with gRPC"
 date: 2026-04-19T23:08:41-06:00
 draft: true
 

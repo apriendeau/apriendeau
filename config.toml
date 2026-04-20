@@ -33,10 +33,7 @@ weight = 2
   googleAnalyticsAsync = true # use asynchronous tracking. Synchronous tracking by default
 
   # Home page settings
-  description = """
-    I am an adult with autism and ADHD. I get paid to yell at LLMs until they
-    write working code. In my remaining hours: keeping two small humans alive.
-  """
+  description = "I am an adult with autism and ADHD. I get paid to yell at LLMs until they write working code. In my remaining hours: keeping two small humans alive."
   mainSection = "posts" # your main section
   showAllPostsOnHomePage = false # default
   postsOnHomePage = 10 # this option will be ignored if showAllPostsOnHomePage is set to true

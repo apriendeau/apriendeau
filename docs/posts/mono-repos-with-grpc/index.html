@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Mono Repos with gRPC | austin</title>
-  <meta name="description" content="    I am an adult with autism and ADHD. I get paid to yell at LLMs until they
-    write working code. In my remaining hours: keeping two small humans alive.
-  ">
+  <meta name="description" content="I am an adult with autism and ADHD. I get paid to yell at LLMs until they write working code. In my remaining hours: keeping two small humans alive.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow,noai,noimageai">
   <meta name="googlebot" content="noai,noimageai">
@@ -93,48 +91,40 @@
 <p>I am going to lay this out with the tools that are my preferred three: rust, go and bun. Why is this important, because when it comes to your mono repo, you should base it around tools you are going to be working with and it should be flexible.</p>
 <h2 id="directory-layout">Directory Layout</h2>
 <p>Lets assume grpc-app1 is a rust grpc service and grpc-app2 is a go grpc service because in the real world we have both. The webapp is some server-side javascript framework flavor of the week (bonus thought: personally really liking sveltekit.) Lastly, the api is some graphql api in bun or go.</p>
-<ul>
-<li>{cool project name}
-<ul>
-<li>.devcontainer</li>
-<li>.github</li>
-<li>build</li>
-<li>platform</li>
-<li>scripts</li>
-<li>src
-<ul>
-<li>config</li>
-<li>grpc-app1</li>
-<li>grpc-app2</li>
-<li>migrations</li>
-<li>pb</li>
-<li>public-api</li>
-<li>webapp</li>
-<li>shared-lib</li>
-</ul>
-</li>
-<li>Cargo.toml</li>
-<li>go.mod</li>
-<li>package.json</li>
-<li>justfile</li>
-<li>CLAUDE.md</li>
-<li>dockerfile-compose.yml</li>
-</ul>
-</li>
-</ul>
-<h3 id="high-level-overview">High level overview:</h3>
+<pre tabindex="0"><code>- {cool project name}
+  - .devcontainer
+  - .github
+  - build
+  - platform
+  - scripts
+  - src
+    - config
+    - grpc-app1
+    - grpc-app2 
+    - migrations
+    - pb
+    - public-api
+    - webapp
+    - shared-lib
+  - Cargo.toml
+  - go.mod
+  - package.json
+  - justfile
+  - CLAUDE.md
+  - dockerfile-compose.yml
+</code></pre><h3 id="high-level-overview">High level overview:</h3>
 <p>If you are familiar with Linux, it&rsquo;s pretty straight forward. The reason
 is cognitive overload. It&rsquo;s real, and as an autistic person I experience
 it more than I&rsquo;d like to admit. So matching the Linux layout where I can
-saves me cycles when I have to go find where the bot went wrong. I will
-break down some of the individual folders.</p>
-<p>.devcontainer/ — devcontainer config
+saves me cycles when I have to go find where the bot went wrong.</p>
+<p>I will break down some of the individual folders:</p>
+<pre tabindex="0"><code>.devcontainer/ — devcontainer config
 .github/       — GitHub config (workflows, templates, codeowners)
 build/         — Dockerfiles
 platform/      — ops and infra
 scripts/       — justfiles
-src/           — programs and shared libraries</p>
-
+src/           — programs and shared libraries
+</code></pre>
     </div>
     <nav class="post-nav">
       <a class="prev" href="http://localhost:1313/posts/working-with-m1/">&lsaquo; My journey with an M1 and Emacs</a>
