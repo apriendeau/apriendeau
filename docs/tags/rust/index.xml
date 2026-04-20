@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on austin</title>
+    <link>http://localhost:1313/tags/rust/</link>
+    <description>Recent content in Rust on austin</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>austin</copyright>
+    <lastBuildDate>Sun, 19 Apr 2026 23:08:41 -0600</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mono Repos with gRPC</title>
+      <link>http://localhost:1313/posts/mono-repos-with-grpc/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>http://localhost:1313/posts/mono-repos-with-grpc/</guid>
+      <description>&lt;p&gt;Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

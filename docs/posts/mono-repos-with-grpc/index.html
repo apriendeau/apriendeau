@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mono Repos with gRPC | austin</title>
+  <meta name="description" content="    I am an adult with autism and ADHD. I get paid to yell at LLMs until they
+    write working code. In my remaining hours: keeping two small humans alive.
+  ">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow,noai,noimageai">
+  <meta name="googlebot" content="noai,noimageai">
+  <meta name="theme-color" content="#07070f">
+  <meta property="og:url" content="http://localhost:1313/posts/mono-repos-with-grpc/">
+  <meta property="og:site_name" content="austin">
+  <meta property="og:title" content="Mono Repos with gRPC">
+  <meta property="og:description" content="Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-19T23:08:41-06:00">
+    <meta property="article:modified_time" content="2026-04-19T23:08:41-06:00">
+    <meta property="article:tag" content="Development">
+    <meta property="article:tag" content="Rust">
+    <meta property="article:tag" content="Go">
+    <meta property="article:tag" content="Bun">
+    <meta property="article:tag" content="Monorepo">
+    <meta property="article:tag" content="Mono">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mono Repos with gRPC">
+  <meta name="twitter:description" content="Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="http://localhost:1313/css/style.css">
+  
+
+  
+  
+  
+
+  
+</head>
+
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="crt">
+    <main class="shell">
+      <header class="terminal-header">
+  <div class="terminal-bar" aria-hidden="true">
+    <span class="dot dot-pink"></span>
+    <span class="dot dot-cyan"></span>
+    <span class="dot dot-purple"></span>
+    <span class="terminal-title">~/austin — zsh</span>
+  </div>
+  <nav class="terminal-nav">
+    <a href="/" class="nav-link">~</a>
+    
+      <a href="/" class="nav-link">home</a>
+    
+      <a href="/posts" class="nav-link">ramblings</a>
+    
+    <a href="/index.xml" class="nav-link">rss</a>
+  </nav>
+</header>
+
+      
+  
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span class="command">cat <span class="flag">mono-repos-with-grpc.md</span></span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-heading" itemprop="name headline">Mono Repos with gRPC</h1>
+      <div class="post-meta">
+        <time datetime="2026-04-19 23:08:41 -0600 MDT" itemprop="datePublished">2026-04-19</time>
+        
+          <span class="tags">
+            <a class="tag" href="/tags/development">#development</a><a class="tag" href="/tags/rust">#rust</a><a class="tag" href="/tags/go">#go</a><a class="tag" href="/tags/bun">#bun</a><a class="tag" href="/tags/monorepo">#monorepo</a><a class="tag" href="/tags/mono">#mono</a><a class="tag" href="/tags/repo">#repo</a><a class="tag" href="/tags/grpc">#grpc</a>
+          </span>
+        
+      </div>
+    </header>
+    <div class="post-content" itemprop="articleBody">
+      <p>Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.</p>
+<p>Why does this even matter if we all are vibecoding anyways? I will die on this argument and hill. Before you vibe anything out or even code by hand, a good structure is key to everything. Its your foundation and having simple, repeatable structure will save you time and tokens when building.</p>
+<p>I am going to lay this out with the tools that are my preferred three: rust, go and bun. Why is this important, because when it comes to your mono repo, you should base it around tools you are going to be working with and it should be flexible.</p>
+<h2 id="directory-layout">Directory Layout</h2>
+<p>Lets assume grpc-app1 is a rust grpc service and grpc-app2 is a go grpc service because in the real world we have both. The webapp is some server-side javascript framework flavor of the week (bonus thought: personally really liking sveltekit.) Lastly, the api is some graphql api in bun or go.</p>
+<ul>
+<li>{cool project name}
+<ul>
+<li>.devcontainer</li>
+<li>.github</li>
+<li>build</li>
+<li>platform</li>
+<li>scripts</li>
+<li>src
+<ul>
+<li>config</li>
+<li>grpc-app1</li>
+<li>grpc-app2</li>
+<li>migrations</li>
+<li>pb</li>
+<li>public-api</li>
+<li>webapp</li>
+<li>shared-lib</li>
+</ul>
+</li>
+<li>Cargo.toml</li>
+<li>go.mod</li>
+<li>package.json</li>
+<li>justfile</li>
+<li>CLAUDE.md</li>
+<li>dockerfile-compose.yml</li>
+</ul>
+</li>
+</ul>
+<h3 id="high-level-overview">High level overview:</h3>
+<p>If you are familiar with Linux, it&rsquo;s pretty straight forward. The reason
+is cognitive overload. It&rsquo;s real, and as an autistic person I experience
+it more than I&rsquo;d like to admit. So matching the Linux layout where I can
+saves me cycles when I have to go find where the bot went wrong. I will
+break down some of the individual folders.</p>
+<p>.devcontainer/ — devcontainer config
+.github/       — GitHub config (workflows, templates, codeowners)
+build/         — Dockerfiles
+platform/      — ops and infra
+scripts/       — justfiles
+src/           — programs and shared libraries</p>
+
+    </div>
+    <nav class="post-nav">
+      <a class="prev" href="http://localhost:1313/posts/working-with-m1/">&lsaquo; My journey with an M1 and Emacs</a>
+      
+    </nav>
+  </article>
+
+      <footer class="terminal-footer">
+  <div class="prompt-line">
+    <span class="prompt-user">austin</span>
+    <span class="prompt-arrow">&rsaquo;</span>
+    <span class="prompt-path">~</span>
+    <span class="cursor" aria-hidden="true">&#9608;</span>
+  </div>
+  
+    <div class="socials">
+      
+        
+          <a href="https://github.com/apriendeau" rel="noopener" target="_blank" class="social-link">github</a>
+        
+      
+        
+          <a href="https://www.linkedin.com/in/apriendeau" rel="noopener" target="_blank" class="social-link">linkedin</a>
+        
+      
+        
+          <a href="mailto:austin@apriendeau.com" class="social-link">email</a>
+        
+      
+    </div>
+  
+</footer>
+
+    </main>
+  </div>
+</body>
+</html>
