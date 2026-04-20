@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <section class="archive">
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span class="command">ls <span class="path">~/{{ .Data.Plural }}</span></span>
+    </div>
+    <ul class="tag-cloud">
+      {{ range .Data.Terms.Alphabetical }}
+        <li><a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a> <span class="count">({{ .Count }})</span></li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}

@@ -1,0 +1,10 @@
+name = "synthwave"
+license = "MIT"
+description = "Modern terminal-style theme with a synthwave palette (pink, cyan, purple)."
+homepage = "https://www.apriendeau.com/"
+tags = ["terminal", "synthwave", "dark", "minimal"]
+features = ["posts", "rss"]
+min_version = "0.80.0"
+
+[author]
+  name = "Austin Priendeau"

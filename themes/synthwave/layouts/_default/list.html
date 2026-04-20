@@ -1,0 +1,23 @@
+{{ define "main" }}
+  {{ $dateFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+  <section class="archive">
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span class="command">ls <span class="flag">-R</span> <span class="path">~/ramblings</span></span>
+    </div>
+    <ul class="post-list archive-list">
+      {{ range (sort .Paginator.Pages "Date" "desc") }}
+        {{ $pageYear := (.Date.Format "2006") }}
+        {{ if (ne $pageYear ($.Scratch.Get "year")) }}
+          {{ $.Scratch.Set "year" $pageYear }}
+          <li class="year-divider"><span class="comment"># {{ $pageYear }}/</span></li>
+        {{ end }}
+        <li class="post-item">
+          <time class="post-date" datetime="{{ time .Date }}">{{ .Date.Format $dateFormat }}</time>
+          <a class="post-title" href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}untitled.md{{ end }}</a>
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" . }}
+  </section>
+{{ end }}

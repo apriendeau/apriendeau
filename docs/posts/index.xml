@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on v1ntage</title>
+    <title>Posts on austin</title>
     <link>https://www.apriendeau.com/posts/</link>
-    <description>Recent content in Posts on v1ntage</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Posts on austin</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <copyright>v1ntage </copyright>
-    <lastBuildDate>Sat, 26 Dec 2020 20:45:10 -0700</lastBuildDate><atom:link href="https://www.apriendeau.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>austin</copyright>
+    <lastBuildDate>Sat, 26 Dec 2020 20:45:10 -0700</lastBuildDate>
+    <atom:link href="https://www.apriendeau.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My journey with an M1 and Emacs</title>
       <link>https://www.apriendeau.com/posts/working-with-m1/</link>
       <pubDate>Sat, 26 Dec 2020 20:45:10 -0700</pubDate>
-      
       <guid>https://www.apriendeau.com/posts/working-with-m1/</guid>
-      <description>TLDR; Things are coming together but just wait if you want to use this type of macbook in a Professional development capicity.
-*Note: At the time of writing this, Docker was not supported and both Rust and Go would not compile on M1 and were in beta versions.
-I had not upgraded my existing macbook in 8 years and Apple finally decided to cut me off from OS upgrades. So naturally, I grabbed an Apple M1 Macbook Air without thinking much.</description>
+      <description>&lt;p&gt;TLDR; Things are coming together but just wait if you want to use this type of macbook in a Professional development capicity.&lt;/p&gt;&#xA;&lt;p&gt;*Note: At the time of writing this, Docker was not supported and both Rust and Go would not compile on M1 and were in beta versions.&lt;/p&gt;&#xA;&lt;p&gt;I had not upgraded my existing macbook in 8 years and Apple finally decided to cut me off from OS upgrades. So naturally, I grabbed an Apple M1 Macbook Air without thinking much.&#xA;The first thing that I did was attempt to install Homebrew. Well that was a nightmare. There was not any good documentation on how to do it, so I am going to let you know how I&#xA;got both systems up&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

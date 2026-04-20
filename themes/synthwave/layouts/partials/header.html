@@ -1,0 +1,15 @@
+<header class="terminal-header">
+  <div class="terminal-bar" aria-hidden="true">
+    <span class="dot dot-pink"></span>
+    <span class="dot dot-cyan"></span>
+    <span class="dot dot-purple"></span>
+    <span class="terminal-title">~/austin — zsh</span>
+  </div>
+  <nav class="terminal-nav">
+    <a href="{{ "/" | relURL }}" class="nav-link">~</a>
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL | relURL }}" class="nav-link">{{ .Name | lower }}</a>
+    {{ end }}
+    {{ if .Site.Params.rss }}<a href="{{ "/index.xml" | relURL }}" class="nav-link">rss</a>{{ end }}
+  </nav>
+</header>

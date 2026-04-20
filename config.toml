@@ -1,12 +1,12 @@
 baseURL = "https://www.apriendeau.com/"
 languageCode = "en-us"
-title = "v1ntage"
-theme = "cactus"
+title = "austin"
+theme = "synthwave"
 
 contentDir = "content"
 publishDir = "docs"
-copyright = "v1ntage " # cactus will use title if copyright is not set
-disqusShortname = "apriendeau" # Used when comments is enabled. Cactus will use site title if not set
+copyright = "austin"
+disqusShortname = "apriendeau"
 # googleAnalytics = "UA-1234-5"
 # summaryLength = 2
 
@@ -17,7 +17,7 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-name = "Writings"
+name = "Ramblings"
 url = "/posts"
 weight = 2
 
@@ -29,13 +29,13 @@ weight = 2
 
 [params]
   # gravatar = "austin@apriendeau.com"
-  colortheme = "dark" # dark, light, white, or classic
   rss = true # generate rss feed. default value is false
   googleAnalyticsAsync = true # use asynchronous tracking. Synchronous tracking by default
 
   # Home page settings
   description = """
-  I live with ADHD. I dabble in keebs, 3D Printing, Olympic Lifting, making music and programming but mostly raise two tiny humans.
+    I am an adult with autism and ADHD. I get paid to yell at LLMs until they
+    write working code. In my remaining hours: keeping two small humans alive.
   """
   mainSection = "posts" # your main section
   showAllPostsOnHomePage = false # default

@@ -1,0 +1,19 @@
+<footer class="terminal-footer">
+  <div class="prompt-line">
+    <span class="prompt-user">{{ with .Site.Copyright }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</span>
+    <span class="prompt-arrow">&rsaquo;</span>
+    <span class="prompt-path">~</span>
+    <span class="cursor" aria-hidden="true">&#9608;</span>
+  </div>
+  {{ if isset .Site.Params "social" }}
+    <div class="socials">
+      {{ range .Site.Params.social }}
+        {{ if eq .name "email" }}
+          <a href="mailto:{{ .link }}" class="social-link">{{ .name }}</a>
+        {{ else }}
+          <a href="{{ .link }}" rel="noopener" target="_blank" class="social-link">{{ .name }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+</footer>

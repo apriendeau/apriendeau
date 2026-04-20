@@ -1,0 +1,75 @@
+{{ define "main" }}
+  {{ $dateFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+  {{ $section := .Site.Params.mainSection | default "posts" }}
+  {{ $mainPosts := (where site.RegularPages "Section" $section) }}
+  {{ $count := 10 }}
+  {{ if isset .Site.Params "postsonhomepage" }}{{ $count = .Site.Params.postsOnHomePage }}{{ end }}
+
+  <section class="whoami">
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span class="command">id</span>
+    </div>
+    <div class="output">
+      <p class="id-line">
+        <span class="id-field">uid</span>=<span class="id-value">1000(austin)</span>
+        <span class="id-field">gid</span>=<span class="id-value">1000(autism,adhd)</span>
+        <span class="id-field">groups</span>=<span class="id-value">1000(engineer),1001(parent)</span>
+      </p>
+    </div>
+
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span class="command">cat <span class="flag">~/.bio</span></span>
+    </div>
+    <div class="output">
+      {{ with .Site.Params.description }}
+        <p class="bio">{{ . | markdownify }}</p>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="posts">
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span class="command">ls -la <span class="flag">~/ramblings</span></span>
+    </div>
+    <ul class="post-list">
+      {{ range (first $count $mainPosts) }}
+        <li class="post-item">
+          <time class="post-date" datetime="{{ time .Date }}">{{ .Date.Format $dateFormat }}</time>
+          <a class="post-title" href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}untitled.md{{ end }}</a>
+        </li>
+      {{ end }}
+    </ul>
+    {{ if gt (len $mainPosts) $count }}
+      <p class="more-link"><a href="{{ .Site.Params.mainSection | absURL }}">&rsaquo; see all posts</a></p>
+    {{ end }}
+  </section>
+
+  {{ $showProjectsList := false }}
+  {{ if .Site.Data.projects }}{{ $showProjectsList = true }}
+  {{ else if (isset .Site.Params "showProjectsList") }}{{ $showProjectsList = .Site.Params.ShowProjectsList }}{{ end }}
+  {{ if $showProjectsList }}
+    {{ $projectsUrl := "#" }}
+    {{ if isset .Site.Params "projectsUrl" }}{{ $projectsUrl = .Site.Params.projectsUrl }}{{ end }}
+    <section class="projects">
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span class="command">cat <span class="flag">projects.txt</span></span>
+      </div>
+      {{ if .Site.Data.projects }}
+        <ul class="project-list">
+          {{ range .Site.Data.projects.list }}
+            <li class="project-item">
+              <a href="{{ .url }}" class="project-name">{{ .name }}</a>
+              <span class="project-desc">{{ .desc | markdownify }}</span>
+            </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <p class="more-link"><a href="{{ $projectsUrl }}">&rsaquo; github.com/apriendeau</a></p>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}
