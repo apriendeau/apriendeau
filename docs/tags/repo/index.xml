@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Repo on austin</title>
-    <link>http://localhost:1313/tags/repo/</link>
+    <link>https://www.apriendeau.com/tags/repo/</link>
     <description>Recent content in Repo on austin</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>austin</copyright>
     <lastBuildDate>Sun, 19 Apr 2026 23:08:41 -0600</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/repo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.apriendeau.com/tags/repo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mono Repos with gRPC</title>
-      <link>http://localhost:1313/posts/mono-repos-with-grpc/</link>
+      <link>https://www.apriendeau.com/posts/mono-repos-with-grpc/</link>
       <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
-      <guid>http://localhost:1313/posts/mono-repos-with-grpc/</guid>
-      <description>&lt;p&gt;Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.&lt;/p&gt;</description>
+      <guid>https://www.apriendeau.com/posts/mono-repos-with-grpc/</guid>
+      <description>&lt;p&gt;Over the years, I have worked with several different git setups but when finally given the choice,&#xA;I always go back to a mono repo setup because switching back and forth just to make a change is&#xA;exhausting for my brain. People ask me how I set it up. I will say that my way probably has its&#xA;flaws but it has worked pretty well for me when working with several services.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

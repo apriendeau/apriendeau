@@ -590,3 +590,87 @@ body::before {
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+
+/* ============================================================
+   chroma / hugo syntax highlighting — synthwave palette
+   ============================================================ */
+
+.chroma {
+  background: var(--bg-code);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.post-content pre .chroma,
+.post-content .chroma { background: var(--bg-code); border: none; padding: 0; }
+
+/* line highlight / line numbers */
+.chroma .lnt, .chroma .ln { color: var(--text-muted); }
+.chroma .hl { background: rgba(255, 62, 201, 0.08); display: block; }
+
+/* comments */
+.chroma .c,  .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs, .chroma .cp, .chroma .cpf {
+  color: var(--text-muted); font-style: italic;
+}
+
+/* keywords (pink phosphor) */
+.chroma .k, .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr, .chroma .kt {
+  color: var(--pink); font-weight: 500;
+}
+
+/* names */
+.chroma .n  { color: var(--text); }
+.chroma .na { color: var(--cyan); }            /* attribute */
+.chroma .nb { color: var(--cyan-bright); }     /* builtin */
+.chroma .bp { color: var(--cyan-bright); }
+.chroma .nc { color: var(--purple-bright); font-weight: 500; } /* class */
+.chroma .no { color: var(--amber); }           /* constant */
+.chroma .nd { color: var(--purple); }          /* decorator */
+.chroma .ni { color: var(--amber); }
+.chroma .ne { color: var(--pink-bright); }     /* exception */
+.chroma .nf { color: var(--purple-bright); }   /* function name */
+.chroma .fm { color: var(--purple-bright); }
+.chroma .nl { color: var(--cyan); }
+.chroma .nn { color: var(--text); }            /* namespace */
+.chroma .py { color: var(--cyan); }
+.chroma .nt { color: var(--pink); }            /* html tag */
+.chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi, .chroma .vm { color: var(--text); }
+
+/* literals: strings, numbers */
+.chroma .l  { color: var(--cyan-bright); }
+.chroma .ld { color: var(--cyan-bright); }
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl,
+.chroma .sd, .chroma .s2, .chroma .sh, .chroma .si, .chroma .sx,
+.chroma .sr, .chroma .s1, .chroma .ss {
+  color: #a6f2c9; /* soft mint — readable string color that still reads retro */
+}
+.chroma .se { color: var(--amber); }           /* string escape */
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi,
+.chroma .il, .chroma .mo { color: var(--amber); }
+
+/* operators + punctuation */
+.chroma .o, .chroma .ow { color: var(--pink); }
+.chroma .p  { color: var(--text-dim); }
+
+/* generic (diffs, output, etc.) */
+.chroma .ge { font-style: italic; }
+.chroma .gs { font-weight: 700; }
+.chroma .gi { color: #a6f2c9; background: rgba(166, 242, 201, 0.08); }
+.chroma .gd { color: var(--pink); background: rgba(255, 62, 201, 0.06); }
+.chroma .gh { color: var(--purple-bright); font-weight: 600; }
+.chroma .gu { color: var(--cyan-bright); font-weight: 600; }
+.chroma .gp { color: var(--pink); }            /* prompt */
+.chroma .go { color: var(--text-dim); }        /* output */
+.chroma .gt { color: var(--pink-bright); }     /* traceback */
+.chroma .gr { color: var(--pink-bright); }
+.chroma .err { color: var(--pink-bright); background: rgba(255, 62, 201, 0.08); }
+
+/* unset background artifacts chroma injects inline */
+.chroma .line { background: transparent !important; }
+.chroma .cl   { background: transparent !important; }

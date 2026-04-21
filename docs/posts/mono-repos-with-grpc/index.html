@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Mono Repos with gRPC | austin</title>
@@ -9,10 +9,10 @@
   <meta name="robots" content="all,follow,noai,noimageai">
   <meta name="googlebot" content="noai,noimageai">
   <meta name="theme-color" content="#07070f">
-  <meta property="og:url" content="http://localhost:1313/posts/mono-repos-with-grpc/">
+  <meta property="og:url" content="https://www.apriendeau.com/posts/mono-repos-with-grpc/">
   <meta property="og:site_name" content="austin">
   <meta property="og:title" content="Mono Repos with gRPC">
-  <meta property="og:description" content="Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.">
+  <meta property="og:description" content="Over the years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People ask me how I set it up. I will say that my way probably has its flaws but it has worked pretty well for me when working with several services.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -28,14 +28,14 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mono Repos with gRPC">
-  <meta name="twitter:description" content="Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.">
+  <meta name="twitter:description" content="Over the years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People ask me how I set it up. I will say that my way probably has its flaws but it has worked pretty well for me when working with several services.">
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="http://localhost:1313/css/style.css">
+  <link rel="stylesheet" href="https://www.apriendeau.com/css/style.css">
   
 
   
@@ -86,48 +86,94 @@
       </div>
     </header>
     <div class="post-content" itemprop="articleBody">
-      <p>Over there years, I have worked with several different git setups but when finally given the choice, I always go back to a mono repo setup because switching back and forth just to make a change is exhausting for my brain. People have come to me and ask how do I set it up. I will say that my way is probably has its flaws but it has worked pretty well for me when working with several services.</p>
-<p>Why does this even matter if we all are vibecoding anyways? I will die on this argument and hill. Before you vibe anything out or even code by hand, a good structure is key to everything. Its your foundation and having simple, repeatable structure will save you time and tokens when building.</p>
-<p>I am going to lay this out with the tools that are my preferred three: rust, go and bun. Why is this important, because when it comes to your mono repo, you should base it around tools you are going to be working with and it should be flexible.</p>
+      <p>Over the years, I have worked with several different git setups but when finally given the choice,
+I always go back to a mono repo setup because switching back and forth just to make a change is
+exhausting for my brain. People ask me how I set it up. I will say that my way probably has its
+flaws but it has worked pretty well for me when working with several services.</p>
+<p>Why does this even matter if we&rsquo;re all vibecoding anyway? I will die on this hill.
+Before you vibe anything out or even code by hand, a good structure is key to everything. It&rsquo;s your
+foundation and having simple, repeatable structure will save you time and tokens when building.
+This is what you should take away from this rant. Architecture is everything and this is the
+foundation.</p>
+<p>I am going to lay this out with the tools that are my preferred three: Rust, Go, and Bun.
+Why is this important? Because when it comes to your mono repo, you should base it around
+tools you are going to be working with and it should be flexible.</p>
+<p>I am going to just show some of the tricks I use but this is not gospel and you should not die by
+this. Every project has its own structure and layout to solve the problem that you are trying to
+solve or service that you are trying to create.</p>
 <h2 id="directory-layout">Directory Layout</h2>
-<p>Lets assume grpc-app1 is a rust grpc service and grpc-app2 is a go grpc service because in the real world we have both. The webapp is some server-side javascript framework flavor of the week (bonus thought: personally really liking sveltekit.) Lastly, the api is some graphql api in bun or go.</p>
-<pre tabindex="0"><code>- {cool project name}
-  - .devcontainer
-  - .github
-  - build
-  - platform
-  - scripts
-  - src
-    - config
-    - grpc-app1
-    - grpc-app2 
-    - migrations
-    - pb
-    - public-api
-    - webapp
-    - shared-lib
-  - Cargo.toml
-  - go.mod
-  - package.json
-  - justfile
-  - CLAUDE.md
-  - dockerfile-compose.yml
-</code></pre><h3 id="high-level-overview">High level overview:</h3>
+<p>Let&rsquo;s assume app1 is a Rust gRPC service and app2 is a Go gRPC service because in the real world we
+have both. The webapp is some server-side JavaScript framework flavor of the week (bonus thought: personally really liking SvelteKit). Lastly, the api is some GraphQL API in Bun or Go.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- {cool project name}
+</span></span><span class="line"><span class="cl">  - .claude/
+</span></span><span class="line"><span class="cl">  - .devcontainer/
+</span></span><span class="line"><span class="cl">  - .github/
+</span></span><span class="line"><span class="cl">  - build/
+</span></span><span class="line"><span class="cl">  - cmd/
+</span></span><span class="line"><span class="cl">  - platform/
+</span></span><span class="line"><span class="cl">  - scripts/
+</span></span><span class="line"><span class="cl">  - src/
+</span></span><span class="line"><span class="cl">    - config/
+</span></span><span class="line"><span class="cl">    - app1/
+</span></span><span class="line"><span class="cl">    - app2/
+</span></span><span class="line"><span class="cl">    - migrations/
+</span></span><span class="line"><span class="cl">    - pb/
+</span></span><span class="line"><span class="cl">      - app1pb/
+</span></span><span class="line"><span class="cl">        - app1.proto
+</span></span><span class="line"><span class="cl">      - app2pb/
+</span></span><span class="line"><span class="cl">        - app2.proto
+</span></span><span class="line"><span class="cl">    - public-api/
+</span></span><span class="line"><span class="cl">    - shared-lib/
+</span></span><span class="line"><span class="cl">    - webapp/
+</span></span><span class="line"><span class="cl">  - Cargo.toml
+</span></span><span class="line"><span class="cl">  - go.mod
+</span></span><span class="line"><span class="cl">  - package.json
+</span></span></code></pre></div><h3 id="high-level-overview">High level overview:</h3>
 <p>If you are familiar with Linux, it&rsquo;s pretty straight forward. The reason
 is cognitive overload. It&rsquo;s real, and as an autistic person I experience
 it more than I&rsquo;d like to admit. So matching the Linux layout where I can
 saves me cycles when I have to go find where the bot went wrong.</p>
 <p>I will break down some of the individual folders:</p>
-<pre tabindex="0"><code>.devcontainer/ — devcontainer config
-.github/       — GitHub config (workflows, templates, codeowners)
-build/         — Dockerfiles
-platform/      — ops and infra
-scripts/       — justfiles
-src/           — programs and shared libraries
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.devcontainer/ — devcontainer config
+</span></span><span class="line"><span class="cl">.github/       — GitHub config (workflows, templates, codeowners)
+</span></span><span class="line"><span class="cl">build/         — Dockerfiles
+</span></span><span class="line"><span class="cl">cmd/           — entry points for each service
+</span></span><span class="line"><span class="cl">platform/      — ops and infrastructure
+</span></span><span class="line"><span class="cl">scripts/       — justfiles or makefiles live here
+</span></span><span class="line"><span class="cl">src/           — programs and shared libraries
+</span></span></code></pre></div><h2 id="workspace-magic">Workspace Magic</h2>
+<p>One architectural decision that I have made with languages is that they need to support
+a workspace-like feature. This is important to making this work. In the use case above,
+we use Rust workspaces and Bun workspaces but not Go.</p>
+<p>For Bun, workspaces let us share a single bun.lock, deduplicate dependencies, and symlink
+local packages so shared libraries can be used without publishing to a registry.</p>
+<p>For Rust, each has its own Cargo.toml. The workspace gives them a shared Cargo.lock,
+unified build commands, and path-based use of shared crates like config, db, and logging.</p>
+<p>For Go, this functionality is the norm. Go workspaces would cause the opposite effect.
+Go workspaces exist specifically for repos with multiple go.mod files that need to reference
+each other during local development. A go.work would be redundant.</p>
+<h2 id="one-ring-to-rule-them-all">One Ring to Rule Them All</h2>
+<p>What does this mean? Well, in this case, one directory can have multiple languages in it.
+I am sure I am breaking some old-school cardinal rule somewhere with this but I actually
+believe this makes the most logical sense.</p>
+<p>Let&rsquo;s take a config directory. We have our three chosen languages here living side by side,
+harmoniously. How, you ask? Well, Go and JavaScript can be in any directory, while Rust needs
+to live under a <code>src</code> directory. Then they import the path they need. Simple as that.</p>
+<h2 id="shared-protobuf-directory">Shared Protobuf directory</h2>
+<p>Why a shared protobuf directory? Well, a couple of reasons, but mainly import cycles. If each
+service kept its proto-generated code inside its own directory (e.g., <code>src/app1/pb/</code>),
+you&rsquo;d create circular import problems — service A imports service B&rsquo;s package just to get
+the proto types, but that pulls in B&rsquo;s entire module.</p>
+<p>For example, your public API is going to need to use the gRPC services, so having a shared
+directory of the generated types is a perfect use case for the shared directory.</p>
+<h2 id="recap">Recap</h2>
+<p>Take everything with a grain of salt. Maybe these tricks will save you some headaches, maybe
+they will create some, but please, take the time to set this up correctly and make sure it
+will scale with you.</p>
+
     </div>
     <nav class="post-nav">
-      <a class="prev" href="http://localhost:1313/posts/working-with-m1/">&lsaquo; My journey with an M1 and Emacs</a>
+      <a class="prev" href="https://www.apriendeau.com/posts/working-with-m1/">&lsaquo; My journey with an M1 and Emacs</a>
       
     </nav>
   </article>

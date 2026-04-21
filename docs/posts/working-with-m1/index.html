@@ -95,24 +95,24 @@ I had not upgraded my existing macbook in 8 years and Apple finally decided to c
 The first thing that I did was attempt to install Homebrew. Well that was a nightmare. There was not any good documentation on how to do it, so I am going to let you know how I
 got both systems up</p>
 <p>So let&rsquo;s get to work, the way for me to get around it without much diving in, was clone the repo into <code>/opt/homebrew</code> with one terminal running in M1 and a copy running in Rosetta, I installed Homebrew the usual way. I then added to my .zshrv the following lines:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rosetta<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>sysctl -n sysctl.proc_translated<span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $rosetta -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;&gt;&gt;&gt; CPU_ARCH: m1&#34;</span>
-</span></span><span style="display:flex;"><span>    export PATH<span style="color:#f92672">=</span>/opt/homebrew/bin:$PATH
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;&gt;&gt;&gt; CPU_ARCH: rosetta2&#34;</span>
-</span></span><span style="display:flex;"><span>    export PATH<span style="color:#f92672">=</span>/usr/local/bin:$PATH
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">rosetta</span><span class="o">=</span><span class="k">$(</span>sysctl -n sysctl.proc_translated<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$rosetta</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; CPU_ARCH: m1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/opt/homebrew/bin:<span class="nv">$PATH</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; CPU_ARCH: rosetta2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:<span class="nv">$PATH</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
 </span></span></code></pre></div><p>This allowed me to tell what kind of terminal that I was running in. Rosetta2 mostly works with a few hiccups with C so I have been attempting to use the M1 and edit brew files as I go.
 I next needed emacs (if you are a vim user, it works outside of the box) and I use <a href="https://github.com/d12frosted/homebrew-emacs-plus">d12frosted/emacs-plus</a>. When attempting to install,
 I would run into an error compiling Rust.* I preceded to use emacs in Rosetta mode which lasted about 2 weeks before they patched emacs for ARM. This was great news but now blocked me
 from using Rosetta, because it knew I was on an ARM processor and jumping straight to using that patch. This was great news and bad news because Homebrew still didn&rsquo;t support Rust. After
 doing some debugging, I figured out that <code>librsvg</code> was where the Rust dependency was being required from. I immediately changed this line in the formula from:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">depends_on</span> <span class="s2">&#34;librsvg&#34;</span>
 </span></span></code></pre></div><p>to:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>depends_on <span style="color:#e6db74">&#34;librsvg&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">:recommended</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">depends_on</span> <span class="s2">&#34;librsvg&#34;</span> <span class="o">=&gt;</span> <span class="ss">:recommended</span>
 </span></span></code></pre></div><p>This gave me emacs again! Yay, I could code like I am normally do. Everything installed with Straight and started writing this. After posting a PR for my patch and a day later, homebrew updated
 patches for Rust and Go on Christmas. So the moral of this Christmas tale is that I guess I should have been more patient but now I am just happy to have emacs working on the M1 and
 not using Rosetta as it is a far better and smoother experience.</p>
@@ -121,7 +121,7 @@ not using Rosetta as it is a far better and smoother experience.</p>
     </div>
     <nav class="post-nav">
       
-      
+      <a class="next" href="https://www.apriendeau.com/posts/mono-repos-with-grpc/">Mono Repos with gRPC &rsaquo;</a>
     </nav>
   </article>
 

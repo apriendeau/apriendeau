@@ -7,20 +7,69 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>austin</copyright>
-    <lastBuildDate>Sat, 26 Dec 2020 20:45:10 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 23:08:41 -0600</lastBuildDate>
     <atom:link href="https://www.apriendeau.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apple</title>
-      <link>https://www.apriendeau.com/tags/apple/</link>
-      <pubDate>Sat, 26 Dec 2020 20:45:10 -0700</pubDate>
-      <guid>https://www.apriendeau.com/tags/apple/</guid>
+      <title>Bun</title>
+      <link>https://www.apriendeau.com/tags/bun/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/bun/</guid>
       <description></description>
     </item>
     <item>
       <title>Development</title>
       <link>https://www.apriendeau.com/tags/development/</link>
-      <pubDate>Sat, 26 Dec 2020 20:45:10 -0700</pubDate>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
       <guid>https://www.apriendeau.com/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>https://www.apriendeau.com/tags/go/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Grpc</title>
+      <link>https://www.apriendeau.com/tags/grpc/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/grpc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mono</title>
+      <link>https://www.apriendeau.com/tags/mono/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/mono/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monorepo</title>
+      <link>https://www.apriendeau.com/tags/monorepo/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/monorepo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Repo</title>
+      <link>https://www.apriendeau.com/tags/repo/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/repo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://www.apriendeau.com/tags/rust/</link>
+      <pubDate>Sun, 19 Apr 2026 23:08:41 -0600</pubDate>
+      <guid>https://www.apriendeau.com/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Apple</title>
+      <link>https://www.apriendeau.com/tags/apple/</link>
+      <pubDate>Sat, 26 Dec 2020 20:45:10 -0700</pubDate>
+      <guid>https://www.apriendeau.com/tags/apple/</guid>
       <description></description>
     </item>
     <item>
