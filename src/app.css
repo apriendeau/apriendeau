@@ -175,6 +175,9 @@ body::before {
    header — terminal chrome
    -------------------------------------------------------- */
 .terminal-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   border-bottom: 1px solid var(--border-chrome);
   background: linear-gradient(180deg, #141128, #0a0814);
 }
@@ -184,7 +187,6 @@ body::before {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--border-soft);
 }
 
 button.dot {
@@ -223,7 +225,7 @@ button.dot {
   display: flex;
   flex-wrap: wrap;
   gap: 2px 4px;
-  padding: 8px 16px;
+  margin-left: auto;
 }
 
 .nav-link {
@@ -242,11 +244,16 @@ button.dot {
   text-shadow: var(--shadow-pink);
 }
 
-.nav-link.active::after {
-  content: "█";
-  margin-left: 2px;
-  font-size: 10px;
-  animation: blink 1.1s steps(2, end) infinite;
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--pink);
+  animation: underline-blink 1.1s steps(2, end) infinite;
+}
+
+@keyframes underline-blink {
+  50% { text-decoration-color: transparent; }
 }
 
 /* --------------------------------------------------------
@@ -563,9 +570,6 @@ button.dot {
   font-weight: 700;
 }
 
-.post-content h2::before { content: "## "; color: var(--text-muted); text-shadow: none; }
-.post-content h3::before { content: "### "; color: var(--text-muted); text-shadow: none; }
-.post-content h4::before { content: "#### "; color: var(--text-muted); text-shadow: none; }
 
 .post-content a {
   color: var(--cyan);
@@ -885,8 +889,7 @@ button.dot {
   .eq-bar { width: 4px; }
   .neofetch-info { font-size: 11.5px; }
 
-  .terminal-input-bar { padding-left: 18px; }
-  .terminal-panel { padding-left: 18px; }
+  .terminal-container { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -86,24 +86,23 @@
 <div class="crt" class:crt-booting={!booted}>
 	<main class="shell">
 		<header class="terminal-header">
-			<div class="terminal-bar" aria-hidden="true">
+			<div class="terminal-bar">
 				<button class="dot dot-pink" onclick={() => handleDotClick('pink')} aria-label="Glitch effect"></button>
 				<button class="dot dot-cyan" onclick={() => handleDotClick('cyan')} aria-label="Scroll to top"></button>
 				<button class="dot dot-purple" onclick={() => handleDotClick('purple')} aria-label="Matrix mode"></button>
-				<span class="terminal-title">~/austin — zsh</span>
+				<nav class="terminal-nav">
+					{#each navLinks as link}
+						<a
+							href={link.href}
+							class="nav-link"
+							class:active={page.url.pathname === link.href ||
+								(link.href !== '/' && page.url.pathname.startsWith(link.href))}
+						>
+							{link.name}
+						</a>
+					{/each}
+				</nav>
 			</div>
-			<nav class="terminal-nav">
-				{#each navLinks as link}
-					<a
-						href={link.href}
-						class="nav-link"
-						class:active={page.url.pathname === link.href ||
-							(link.href !== '/' && page.url.pathname.startsWith(link.href))}
-					>
-						{link.name}
-					</a>
-				{/each}
-			</nav>
 		</header>
 
 		{@render children()}
