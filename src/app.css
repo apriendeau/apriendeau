@@ -438,6 +438,43 @@ button.dot {
 }
 .more-link a:hover { color: var(--purple-bright); text-shadow: var(--shadow-purple); }
 
+.project-item {
+  display: flex;
+  gap: 12px;
+  padding: 5px 0;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin: 0 -8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 2px;
+  transition: background 150ms;
+}
+
+.project-item:hover { background: rgba(166, 108, 255, 0.04); }
+
+.project-name {
+  color: var(--pink);
+  text-decoration: none;
+  font-weight: 500;
+  flex-shrink: 0;
+  transition: color 100ms, text-shadow 100ms;
+}
+.project-name:hover { color: var(--pink-bright); text-shadow: var(--shadow-pink); }
+
+.project-lang {
+  color: var(--amber);
+  font-size: 11px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
 /* --------------------------------------------------------
    single post
    -------------------------------------------------------- */

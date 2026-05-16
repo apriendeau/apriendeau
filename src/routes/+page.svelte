@@ -84,9 +84,15 @@
 <section class="projects">
 	<div class="command-line">
 		<span class="prompt-char">$</span>
-		<span class="command">cat <span class="flag">projects.txt</span></span>
+		<span class="command">ls -la <span class="flag">~/projects</span></span>
 	</div>
-	<p class="more-link">
-		<a href="https://github.com/apriendeau">&rsaquo; github.com/apriendeau</a>
-	</p>
+	<ul class="project-list">
+		{#each site.projects as project}
+			<li class="project-item">
+				<a href={project.url} class="project-name" target="_blank" rel="noopener">{project.name}</a>
+				<span class="project-lang">{project.lang}</span>
+				<span class="project-desc">{project.desc}</span>
+			</li>
+		{/each}
+	</ul>
 </section>
