@@ -4,25 +4,32 @@ default: help
 help:
     @just --list
 
-# build the site with no server
+# install dependencies
+install:
+    bun install
+
+# run local dev server
+dev:
+    bun run dev
+
+# build static site
 build:
-    hugo --config="config.toml"
+    bun run build
+
+# preview production build
+preview:
+    bun run preview
+
+# type-check
+check:
+    bun run check
 
 # create a new post: just post my-slug
 post slug:
-    hugo new posts/{{slug}}.md
-
-# run local server on :1313 with drafts
-server *args:
-    hugo {{args}} server -D --config="config.toml"
-
-# same as server but disables fast rendering
-rebuild-server *args:
-    hugo {{args}} server --disableFastRender -D --config="config.toml"
-
-# alias for server
-serve *args: (server args)
-
-# create a new static page: just static my-slug
-static slug:
-    hugo new static/{{slug}}.md
+    @echo '---' > src/lib/posts/{{slug}}.md
+    @echo 'title: "{{slug}}"' >> src/lib/posts/{{slug}}.md
+    @echo 'date: "'$(date +%Y-%m-%d)'"' >> src/lib/posts/{{slug}}.md
+    @echo 'tags: []' >> src/lib/posts/{{slug}}.md
+    @echo '---' >> src/lib/posts/{{slug}}.md
+    @echo '' >> src/lib/posts/{{slug}}.md
+    @echo "Created src/lib/posts/{{slug}}.md"
