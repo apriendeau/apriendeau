@@ -4,7 +4,7 @@ date: "2026-06-09"
 tags: ["vector", "database", "development", "ai", "search", "wdpkr", "duckedup", "vibe-coding", "lancedb"]
 ---
 
-A while back, Tyler Lugger and I discussed vector searching, and he implemented Turbopuffer into our stack because I like to believe we both share a mutual hatred of running Java in production. He probably has a more elegant way of phrasing it, but that's my version. I am always skeptical of developers depending on cloud products and not being able to run everything off their laptop—outages are real—but I buried that thought and moved on.
+A while back, Tyler Lugger and I discussed vector searching, and he implemented Turbopuffer into our stack because I like to believe we both share a mutual hatred of running Java in production. He probably has a more elegant way of phrasing it, but that's my version. I am always skeptical of developers depending on cloud products and not being able to run everything off their laptop—outages are real, but I buried that thought and moved on.
 
 Then along came [wdpkr](https://wdpkr.duckedup.org/). 
 
