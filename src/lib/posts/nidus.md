@@ -59,4 +59,10 @@ let results = tokio::task::spawn_blocking(move || {
 
 The library stays synchronous, and the server layers async on top of it. The control lives where it should: in the program doing the embedding.
 
-None of this makes nidus special on paper. It's brute-force, single-threaded, and deliberately boring. But it compiles in under a minute, runs off a laptop, and ships inside wdpkr with zero setup. And after the LanceDB and DuckDB detours, boring is exactly what I wanted.
+## Brute-force by default, ANN when you need it
+
+Brute-force was the right call for the MVP. It's simple, predictable, and memory-safe, and for the sizes we were targeting it's plenty fast. But it doesn't scale forever, and not every dataset is small. So we're adding an approximate-nearest-neighbour index as an opt-in. You stay on brute-force by default, and reach for ANN when your data outgrows it.
+
+The point isn't to pick a side. It's to let the consumer choose the tradeoff between exactness and speed, the same way they choose how to handle async. The boring default is still there when you want it.
+
+None of this makes nidus special on paper. It's brute-force by default, single-threaded, and deliberately boring. But it compiles in under a minute, runs off a laptop, and ships inside wdpkr with zero setup. And after the LanceDB and DuckDB detours, boring is exactly what I wanted.
