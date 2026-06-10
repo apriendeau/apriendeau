@@ -48,6 +48,15 @@ So after all of that, the MVP requirements became clear:
 
 After a night of designing and laying out the specs, I built the nest, or [nidus](https://nidus.duckedup.org/), which is Latin for nest. Everything I am going to lay out is subject to change because we are experimenting with these decisions, and if they turn out to be wrong, I will update this. With it, our compile times came back under a minute, one step closer to our goal of running everything locally.
 
-Why "no async"? Since this was going to be embedded, I wanted the program embedding it to have that control. So now, that program can use it in async calls to its heart's content with no issues.
+Why "no async"? Since this was going to be embedded, I wanted the program embedding it to have that control. The library exposes plain blocking calls, and the consumer decides how to schedule them. The nidus server is its own proof of this: it's a consumer of the library, and it implements async the way a library should let you, by wrapping the synchronous calls itself. The brute-force scan gets handed to `tokio::task::spawn_blocking` so it runs on the blocking thread pool instead of stalling the runtime:
+
+```rust
+let results = tokio::task::spawn_blocking(move || {
+    index.search(&query, top_k)
+})
+.await?;
+```
+
+The library stays synchronous, and the server layers async on top of it. The control lives where it should: in the program doing the embedding.
 
 None of this makes nidus special on paper. It's brute-force, single-threaded, and deliberately boring. But it compiles in under a minute, runs off a laptop, and ships inside wdpkr with zero setup. And after the LanceDB and DuckDB detours, boring is exactly what I wanted.
