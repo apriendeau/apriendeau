@@ -9,15 +9,21 @@ export const site = {
 	],
 	projects: [
 		{
-			name: 'phx',
-			desc: 'it was already on fire. we just gave it wings.',
-			url: 'https://github.com/duckedup/phx',
+			name: 'nidus',
+			desc: 'latin for nest. a light, embeddable vector search born of spite.',
+			url: 'https://nidus.duckedup.org',
 			lang: 'Rust'
 		},
 		{
 			name: 'wdpkr',
 			desc: 'like a woodpecker — rapidly scans surfaces, taps methodically, finds the exact thing hidden inside a huge noisy structure',
-			url: 'https://github.com/duckedup/wdpkr',
+			url: 'https://wdpkr.duckedup.org',
+			lang: 'Rust'
+		},
+		{
+			name: 'phx',
+			desc: 'it was already on fire. we just gave it wings.',
+			url: 'https://github.com/duckedup/phx',
 			lang: 'Rust'
 		},
 		{
