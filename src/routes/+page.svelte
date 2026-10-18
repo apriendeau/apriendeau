@@ -50,8 +50,8 @@
 			<p class="nf-row"><span class="nf-label">Shell:</span> <span class="nf-val">zsh + emacs</span></p>
 			<p class="nf-row"><span class="nf-label">Groups:</span> <span class="nf-val">engineer, parent</span></p>
 			<p class="nf-row">
-				<span class="nf-label">uid</span>=<span class="id-value">1000(austin)</span>
-				<span class="nf-label">gid</span>=<span class="id-value">1000(autism,adhd)</span>
+				<span class="nf-label">uid</span>=<span class="id-value">1000</span>
+				<span class="nf-label">gid</span>=<span class="id-value">1000</span>
 			</p>
 			<p class="nf-bio">{site.description}</p>
 			<div class="nf-palette">
