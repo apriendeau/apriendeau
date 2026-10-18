@@ -15,7 +15,7 @@
 		{#each data.posts as post}
 			<li class="post-item">
 				<time class="post-date" datetime={post.date}>{post.date}</time>
-				<a class="post-title-link" href="/ramblings/{post.slug}">{post.title}</a>
+				<a class="post-title-link" href="/ramblings/{post.slug}/">{post.title}</a>
 			</li>
 		{/each}
 	</ul>

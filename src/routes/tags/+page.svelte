@@ -13,7 +13,7 @@
 	</div>
 	<ul class="tag-cloud">
 		{#each data.tags as tag}
-			<li><a href="/tags/{tag.name}">#{tag.name}</a> <span class="tag-count">({tag.count})</span></li>
+			<li><a href="/tags/{tag.name}/">#{tag.name}</a> <span class="tag-count">({tag.count})</span></li>
 		{/each}
 	</ul>
 </section>

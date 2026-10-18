@@ -631,6 +631,7 @@ button.dot {
   background: none;
   border: none;
   padding: 0;
+  font-size: inherit;
   color: var(--text);
 }
 
@@ -887,9 +888,57 @@ button.dot {
   .neofetch-layout { flex-direction: column; gap: 18px; padding-left: 18px; align-items: flex-start; }
   .eq-visualizer { height: 50px; }
   .eq-bar { width: 4px; }
-  .neofetch-info { font-size: 11.5px; }
+  .neofetch-info { font-size: 13px; }
 
   .terminal-container { display: none; }
+
+  /* readable text: nothing under 13px on phones */
+  .post-date,
+  .project-lang,
+  .project-desc,
+  .tag,
+  .tag-count,
+  .post-meta,
+  .post-nav,
+  .more-link { font-size: 13px; }
+  .post-content pre,
+  .post-content .shiki { font-size: 13px; }
+
+  /* finger-sized tap targets */
+  /* dots become 28px transparent buttons with the visible dot drawn inside */
+  .terminal-bar { gap: 0; padding: 2px 8px; }
+  button.dot {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+  button.dot::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.4);
+  }
+  .dot-pink::after   { background: var(--pink);   box-shadow: var(--shadow-pink); }
+  .dot-cyan::after   { background: var(--cyan);   box-shadow: var(--shadow-cyan); }
+  .dot-purple::after { background: var(--purple); box-shadow: var(--shadow-purple); }
+  .dot:hover { transform: none; }
+  .project-name { min-width: 24px; }
+  .about-links a { display: inline-block; padding: 10px 0; }
+  .nav-link { padding: 10px 8px; font-size: 14px; }
+  .post-item, .project-item { padding-top: 6px; padding-bottom: 6px; }
+  .post-title-link,
+  .project-name,
+  .more-link a { display: inline-block; padding: 8px 0; }
+  .tags { gap: 10px; }
+  .tag { padding: 6px 10px; }
+  .tag-cloud { gap: 10px 12px; }
+  .tag-cloud a { display: inline-block; padding: 8px 4px; }
+  .post-nav a { display: inline-block; padding: 10px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

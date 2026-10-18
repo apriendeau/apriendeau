@@ -133,7 +133,7 @@
 			const lines = posts
 				.map(
 					(p) =>
-						`<span class="t-perm">-rw-r--r--</span>  <span class="t-date">${p.date}</span>  <a href="/ramblings/${p.slug}" class="t-file">${esc(p.slug)}.md</a>`
+						`<span class="t-perm">-rw-r--r--</span>  <span class="t-date">${p.date}</span>  <a href="/ramblings/${p.slug}/" class="t-file">${esc(p.slug)}.md</a>`
 				)
 				.join('\n');
 			push('out', lines);
@@ -144,9 +144,9 @@
 			if (!target || target === '~' || target === '/') {
 				goto('/');
 			} else if (target === 'ramblings' || target === '~/ramblings') {
-				goto('/ramblings');
+				goto('/ramblings/');
 			} else if (target === 'tags' || target === '~/tags') {
-				goto('/tags');
+				goto('/tags/');
 			} else if (target === '..') {
 				const parts = page.url.pathname.split('/').filter(Boolean);
 				parts.pop();
@@ -166,7 +166,7 @@
 			}
 			const post = posts.find((p) => p.slug === slug);
 			if (post) {
-				goto(`/ramblings/${post.slug}`);
+				goto(`/ramblings/${post.slug}/`);
 				push('out', '');
 			} else {
 				push('err', `cat: ${esc(args[0])}: No such file or directory`);
@@ -195,7 +195,7 @@
 					matches
 						.map(
 							(p) =>
-								`<a href="/ramblings/${p.slug}" class="t-file">${esc(p.slug)}.md</a>: <span class="t-match">${esc(p.title)}</span>`
+								`<a href="/ramblings/${p.slug}/" class="t-file">${esc(p.slug)}.md</a>: <span class="t-match">${esc(p.title)}</span>`
 						)
 						.join('\n')
 				);
