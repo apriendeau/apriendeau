@@ -13,9 +13,9 @@
 
 	const navLinks = [
 		{ name: '~', href: '/' },
-		{ name: 'about', href: '/about' },
-		{ name: 'ramblings', href: '/ramblings' },
-		{ name: 'tags', href: '/tags' }
+		{ name: 'about', href: '/about/' },
+		{ name: 'ramblings', href: '/ramblings/' },
+		{ name: 'tags', href: '/tags/' }
 	];
 
 	const konamiSequence = [
@@ -79,6 +79,9 @@
 <svelte:head>
 	<title>{site.title}</title>
 	<meta name="description" content={site.description} />
+	{#if !page.url.pathname.startsWith('/posts')}
+		<link rel="canonical" href="{site.url}{page.url.pathname}" />
+	{/if}
 </svelte:head>
 
 <MatrixRain active={matrixActive} onDismiss={() => (matrixActive = false)} />

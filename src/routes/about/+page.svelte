@@ -14,7 +14,7 @@
 	</div>
 	<div class="post-content">
 		<About />
-		<p>
+		<p class="about-links">
 			{#each site.social as s, i}
 				{#if i > 0}&nbsp;·&nbsp;{/if}<a href={s.link} target="_blank" rel="noopener">{s.name}</a>
 			{/each}

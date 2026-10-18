@@ -18,7 +18,7 @@
 			{#if data.post.tags?.length}
 				<span class="tags">
 					{#each data.post.tags as tag}
-						<a class="tag" href="/tags/{tag}">#{tag}</a>
+						<a class="tag" href="/tags/{tag}/">#{tag}</a>
 					{/each}
 				</span>
 			{/if}
@@ -29,10 +29,10 @@
 	</div>
 	<nav class="post-nav">
 		{#if data.prev}
-			<a class="prev" href="/ramblings/{data.prev.slug}">&lsaquo; {data.prev.title}</a>
+			<a class="prev" href="/ramblings/{data.prev.slug}/">&lsaquo; {data.prev.title}</a>
 		{/if}
 		{#if data.next}
-			<a class="next" href="/ramblings/{data.next.slug}">{data.next.title} &rsaquo;</a>
+			<a class="next" href="/ramblings/{data.next.slug}/">{data.next.title} &rsaquo;</a>
 		{/if}
 	</nav>
 </article>
