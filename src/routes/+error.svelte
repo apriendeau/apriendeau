@@ -1,10 +1,9 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { page } from '$app/state';
 </script>
 
-<svelte:head>
-	<title>404 | austin</title>
-</svelte:head>
+<Seo title="404" />
 
 <section class="archive">
 	<div class="command-line">

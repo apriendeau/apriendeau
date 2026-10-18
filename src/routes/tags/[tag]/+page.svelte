@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { site } from '$lib/config';
+	import Seo from '$lib/components/Seo.svelte';
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>#{data.tag} | austin</title>
-</svelte:head>
+<Seo title="#{data.tag}" description="Posts by {site.name} tagged #{data.tag}." />
 
 <section class="archive">
 	<div class="command-line">

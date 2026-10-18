@@ -1,5 +1,8 @@
 export const site = {
 	title: 'austin',
+	name: 'Austin Riendeau',
+	jobTitle: 'CTO',
+	worksFor: 'Fortitude Life',
 	description:
 		'Autistic, ADHD, part-time yeller at LLMs. Full-time keeper of two tiny humans.',
 	url: 'https://www.apriendeau.com',

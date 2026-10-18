@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { site } from '$lib/config';
+	import Seo from '$lib/components/Seo.svelte';
 	let { data } = $props();
 
 	const postsByYear = $derived.by(() => {
@@ -11,9 +13,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>ramblings | austin</title>
-</svelte:head>
+<Seo title="ramblings" description="Every post by {site.name}." />
 
 <section class="archive">
 	<div class="command-line">
