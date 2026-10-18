@@ -2,7 +2,6 @@
 	import '../app.css';
 	import { page } from '$app/state';
 	import { beforeNavigate } from '$app/navigation';
-	import { site } from '$lib/config';
 	import Terminal from '$lib/components/Terminal.svelte';
 	import MatrixRain from '$lib/components/MatrixRain.svelte';
 
@@ -75,14 +74,6 @@
 		}
 	}
 </script>
-
-<svelte:head>
-	<title>{site.title}</title>
-	<meta name="description" content={site.description} />
-	{#if !page.url.pathname.startsWith('/posts')}
-		<link rel="canonical" href="{site.url}{page.url.pathname}" />
-	{/if}
-</svelte:head>
 
 <MatrixRain active={matrixActive} onDismiss={() => (matrixActive = false)} />
 

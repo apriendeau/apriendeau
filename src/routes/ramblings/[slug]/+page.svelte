@@ -1,10 +1,24 @@
 <script lang="ts">
+	import { site } from '$lib/config';
+	import { person } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>{data.post.title} | austin</title>
-</svelte:head>
+<Seo
+	title={data.post.title}
+	description={data.post.description}
+	type="article"
+	jsonLd={{
+		'@type': 'BlogPosting',
+		headline: data.post.title,
+		description: data.post.description,
+		datePublished: data.post.date,
+		keywords: data.post.tags?.join(', '),
+		url: `${site.url}/ramblings/${data.post.slug}/`,
+		author: person
+	}}
+/>
 
 <article class="post">
 	<div class="command-line">

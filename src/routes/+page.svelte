@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { site } from '$lib/config';
+	import { person } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 	let { data } = $props();
 
 	const bars = [
@@ -23,6 +25,16 @@
 		{ h: 18, c: '--pink', d: 0.6 },
 	];
 </script>
+
+<Seo
+	type="profile"
+	jsonLd={{
+		'@graph': [
+			person,
+			{ '@type': 'WebSite', name: site.name, url: `${site.url}/`, author: { '@id': person['@id'] } }
+		]
+	}}
+/>
 
 <section class="whoami">
 	<div class="command-line">

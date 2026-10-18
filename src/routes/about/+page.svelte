@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { site } from '$lib/config';
 	import About from '$lib/about.md';
+	import { person } from '$lib/seo';
+	import Seo from '$lib/components/Seo.svelte';
 </script>
 
-<svelte:head>
-	<title>about | austin</title>
-</svelte:head>
+<Seo
+	title="about"
+	description="About {site.name}: {site.jobTitle} at {site.worksFor}, software engineer, and writer of ramblings."
+	type="profile"
+	jsonLd={{ '@type': 'ProfilePage', mainEntity: person }}
+/>
 
 <article class="post">
 	<div class="command-line">
